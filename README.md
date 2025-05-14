@@ -8,9 +8,9 @@
 ## Ejecución de la aplicación
 
 1. Abre una terminal en la carpeta del proyecto:  
-   `C:\Users\User\Proyecto NodeJS\ssl-antlr-usuarios`
+   `C:\Users\Tu-Usuario\Proyecto NodeJS\antlr-usuarios-project`
 
-2. Asegúrate de que el archivo `input(1-4).txt` esté presente en la carpeta del proyecto.
+2. Asegúrate de que los archivos `input_(correcto/incorrecto)_(1/2).txt` estén presente en la carpeta `.. \Proyecto NodeJS`.
 
 3. Ejecuta la aplicación con el siguiente comando:
 
@@ -24,11 +24,13 @@
    ¿Qué archivo input deseas elegir? (Ingresa un número del 1 al 4):
    ```
 
-   Escribe `1-4` y presiona Enter.
+   Escribe `1/2/3/4` y presiona Enter.
 
-5. La aplicación procesará el archivo `input(1-4).txt` y mostrará el resultado en la consola.
+5. Si se eligen los números 1 o 2 se procesan los archivos `input_correcto_(1/2).txt` respectivamente, pero si se eligen los números 3 o 4 se procesan los archivos `input_incorrecto_(1/2).txt`, teniendo en cuenta que el número 3 corresponde a 1 y el 4 corresponde a 2.
+
+6. La aplicación procesará el archivo `input_(correcto/incorrecto)_(1/2).txt` dependiendo del número que se haya escogido y mostrará el resultado en la consola.
 
 ---
 
 **Nota:**  
-Si deseas probar con otro archivo de entrada, asegúrate de que el archivo correspondiente (`input2.txt`, `input3.txt`, etc.) esté en la carpeta y selecciona el número adecuado cuando se te solicite.
+Si deseas probar con otro archivo de entrada, puedes volver a colocar en la terminal "node index.js" y escoger un número distinto al elegido anteriormente.

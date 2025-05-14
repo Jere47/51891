@@ -44,8 +44,11 @@ async function main() {
             });
         });
 
-        if (archivo >= 1 && archivo <= 4) {
-            archivo = `input${archivo}.txt`;
+        if (archivo >= 1 && archivo <= 2) {
+            archivo = `input_correcto_${archivo}.txt`;
+            break; // Sal del bucle si el número es válido
+        } else if (archivo >= 3 && archivo <= 4) {
+            archivo = `input_incorrecto_${archivo - 2}.txt`;
             break; // Sal del bucle si el número es válido
         } else {
             console.error("\nNúmero de archivo no válido. Debe ser un número entre 1 y 4. Inténtalo de nuevo.\n");
@@ -56,7 +59,7 @@ async function main() {
 
     // Intento leer la entrada desde el archivo txt que elija
     try {
-        input = fs.readFileSync(`${archivo}`, 'utf8');
+        input = fs.readFileSync(`../${archivo}`, 'utf8');
     } catch (err) {
         // Si no es posible leer el archivo, solicitar la entrada del usuario por teclado
         input = await leerCadena();
