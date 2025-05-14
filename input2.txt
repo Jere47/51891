@@ -1,0 +1,6 @@
+usuario Asesor {
+    nombre = "Ignacio Fernandez";
+    edad = 52;
+    activo = falso;
+    estado civil = "casado";
+}

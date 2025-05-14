@@ -1,0 +1,6 @@
+usuario Conserje 2 {
+    nombre = "Franco Hernandez";
+    edad = 45;
+    activo = verdadero;
+    estado civil : "soltero"
+}

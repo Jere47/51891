@@ -1,0 +1,10 @@
+usuario Contador {
+    nombre = "Juan Perez";
+    edad = 30;
+    activo = verdadero;
+    estado civil = "casado";
+}
+
+
+
+

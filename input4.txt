@@ -1,0 +1,6 @@
+usuario Jardinero {
+    nombre = "Esteban Diaz";
+    "edad" = 28;
+    activo = verdadero;
+    estado civil = soltero;
+}
