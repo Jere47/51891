@@ -8,9 +8,9 @@
 ## Ejecución de la aplicación
 
 1. Abre una terminal en la carpeta del proyecto:  
-   `C:\Users\Tu-Usuario\Proyecto NodeJS\antlr-usuarios-project`
+   `...\antlr-usuarios-project`
 
-2. Asegúrate de que los archivos `input_(correcto/incorrecto)_(1/2).txt` estén presente en la carpeta `.. \Proyecto NodeJS`.
+2. Asegúrate de que los archivos `input_(correcto/incorrecto)_(1/2).txt` estén presentes.
 
 3. Ejecuta la aplicación con el siguiente comando:
 
