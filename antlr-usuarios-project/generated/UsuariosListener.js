@@ -1,4 +1,4 @@
-// Generated from c:/Users/jerea/ssl-antlr-calculator/Usuarios.g4 by ANTLR 4.13.2
+// Generated from c:/Users/jerea/Vale/51891/antlr-usuarios-project/Usuarios.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -65,24 +65,6 @@ export default class UsuariosListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by UsuariosParser#booleano.
 	exitBooleano(ctx) {
-	}
-
-
-	// Enter a parse tree produced by UsuariosParser#identificador.
-	enterIdentificador(ctx) {
-	}
-
-	// Exit a parse tree produced by UsuariosParser#identificador.
-	exitIdentificador(ctx) {
-	}
-
-
-	// Enter a parse tree produced by UsuariosParser#caracter.
-	enterCaracter(ctx) {
-	}
-
-	// Exit a parse tree produced by UsuariosParser#caracter.
-	exitCaracter(ctx) {
 	}
 
 

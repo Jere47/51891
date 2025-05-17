@@ -3,45 +3,32 @@ grammar Usuarios;
 // Reglas principales
 programa   : usuario+ ;
 
-usuario    : USER identificador LBRACE atributo* RBRACE ;
+usuario    : USER ID LBRACE atributo* RBRACE ;
 
-atributo   : identificador EQ valor PUNTO_Y_COMA ;
+atributo   : ID EQ valor SEMICOLON ;
 
 valor      : numero
            | cadena
            | booleano ;
 
-numero     : DIGITO+ ;
+numero     : NUMBER ;
 
-cadena     : COMILLA caracter* COMILLA ;
+cadena     : STRING ;
 
-booleano   : VERDADERO
-           | FALSO ;
-
-identificador : LETRA (LETRA | DIGITO)* ;
-
-caracter   : LETRA
-           | DIGITO
-           | PUNTO
-           | COMA
-           | EXCLAMATION
-           | QUESTION
-           | COLON
-           | PUNTO_Y_COMA
-           | S_QUOTE
-           ;
-
+booleano   : TRUE
+           | FALSE ;
 
 // Lexemas
-LETRA      : [a-zA-Z]; 
-DIGITO     : [0-9];
-VERDADERO  : 'verdadero';
-FALSO      : 'falso';
+TRUE       : 'verdadero';
+FALSE      : 'falso';
 USER       : 'usuario';
+ID         : [a-zA-ZáéíóúÁÉÍÓÚñÑ_][a-zA-Z0-9áéíóúÁÉÍÓÚñÑ_]* ;
+STRING     : '"' (~["\r\n])* '"' ;
+NUMBER     : [0-9]+;
 LBRACE     : '{';
 RBRACE     : '}';
 PUNTO      : '.';
-PUNTO_Y_COMA : ';';
+SEMICOLON  : ';';
 EQ         : '=';
 COMA       : ',';
 COMILLA    : '"';
@@ -50,29 +37,3 @@ QUESTION   : '?';
 COLON      : ':';
 S_QUOTE    : '\'';
 WS : [ \t\r\n]+ -> skip ;
-
-// prog: stat+;
-
-// stat: expr NEWLINE?              #printExpr
-//     | ID EQ expr NEWLINE?        #assign
-//     | NEWLINE                   #blank
-//     ;
-
-// expr: expr op=(MUL|DIV) expr    #MulDiv
-//     | expr op=(ADD|SUB) expr    #AddSub
-//     | INT                       #int
-//     | ID                        #id
-//     | LPAREN expr RPAREN        #parens
-//     ;
-
-// MUL : '*';
-// DIV : '/';
-// ADD : '+';
-// SUB : '-';
-// EQ: '=';
-// ID : [a-zA-Z]+;
-// INT : [0-9];
-// LPAREN : '(';
-// RPAREN : ')';
-// NEWLINE:'\r'? '\n';
-// WS: [ \t]+ -> skip;

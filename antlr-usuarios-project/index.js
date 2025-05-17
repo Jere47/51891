@@ -6,14 +6,18 @@ import readline from 'readline';
 import fs from 'fs';
 
 function crearUsuario(id, atributos) {
-    console.log(`crearUsuario ("${id}", [`);
+    if (!atributos || atributos.length === 0) {
+       console.log(`No hay atributos para el usuario: ${id}`);
+       return; // Exit if there are no attributes
+    }
+    console.log(`crearUsuario ("${id}", [`); // Log the user creation
     atributos.forEach(({ clave, valor }, index) => {
-        const separator = index === atributos.length - 1 ? '' : ';'; // Agrega ';' excepto en el último atributo
-        console.log(`    {clave: "${clave}", valor: ${typeof valor === 'string' ? `"${valor}"` : valor}}${separator}`);
-    });
-    console.log("])");
+       const separator = index === atributos.length - 1 ? '' : ';'; // Add ';' except for the last attribute
+       console.log(`    {clave: "${clave}", valor: ${typeof valor === 'string' ? `"${valor}"` : valor}}${separator}`);
+   });
+   console.log("])");
 }
-
+   
 function leerCadena() {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -66,17 +70,42 @@ async function main() {
         console.log(input);
     }
 
-    // Proceso la entrada con el analizador
+    // Proceso la entrada con el analizador para obtener el lexer
     let inputStream = CharStreams.fromString(input);
     let lexer = new UsuariosLexer(inputStream);
+
+    // Obtén los tokens ANTES de crear el parser
+    const tokens = lexer.getAllTokens();
+    if (tokens.length === 0) {
+        console.error("No se generaron tokens. Verifica la entrada y la gramática.");
+        return;
+    }
+
+    // Ahora vuelve a crear el inputStream y lexer para el parser
+    inputStream = CharStreams.fromString(input);
+    lexer = new UsuariosLexer(inputStream);
     let tokenStream = new CommonTokenStream(lexer);
     let parser = new UsuariosParser(tokenStream);
-    let tree = parser.programa(); // Cambiado para usar la regla `programa` de la gramática `Usuarios.g4`
+    let tree = parser.programa();
 
     // Verifico si se produjeron errores
-    if (parser._syntaxErrors > 0) { // Cambiado a `parser._syntaxErrors` para verificar errores
+    if (parser._syntaxErrors > 0) {
         console.error(`\nSe encontraron ${parser._syntaxErrors} errores de sintaxis en la entrada.`);
+        return; // <-- Agrega este return para que no siga mostrando la tabla ni nada más
     } else {
+        // Mostrar la tabla de tokens y lexemas SOLO si no hay errores
+        console.log("\nTabla de Tokens y Lexemas:");
+        console.log("--------------------------------------------------");
+        console.log("| Lexema          | Token                        |");
+        console.log("--------------------------------------------------");
+
+        for (let token of tokens) {
+            const tokenType = UsuariosLexer.symbolicNames[token.type] || `UNKNOWN (${token.type})`;
+            const lexema = token.text;
+            console.log(`| ${lexema.padEnd(16)}| ${tokenType.padEnd(28)}|`);
+        }
+        console.log("--------------------------------------------------");
+
         console.log("\nEntrada válida.");
 
         // Imprime el árbol de derivación solo si no hay errores
@@ -86,10 +115,15 @@ async function main() {
         // Utilizo el visitor para procesar los nodos del árbol
         const visitor = new CustomUsuariosVisitor();
         const usuarios = visitor.visit(tree);
+        
+        if (!usuarios || usuarios.length === 0) {
+            console.error("No se procesaron usuarios.");
+            return;
+        }
 
-        // Llamo a la función para crear usuarios en base a los datos procesados
+        // Llama a crearUsuario para cada usuario procesado
         usuarios.forEach(usuario => {
-            crearUsuario(usuario.nombre, usuario.atributos);
+            crearUsuario(usuario.nombre, usuario.atributo);
         });
     }
 }

@@ -1,4 +1,4 @@
-// Generated from c:/Users/jerea/ssl-antlr-calculator/Usuarios.g4 by ANTLR 4.13.2
+// Generated from c:/Users/jerea/Vale/51891/antlr-usuarios-project/Usuarios.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -44,18 +44,6 @@ export default class UsuariosVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by UsuariosParser#booleano.
 	visitBooleano(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by UsuariosParser#identificador.
-	visitIdentificador(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by UsuariosParser#caracter.
-	visitCaracter(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

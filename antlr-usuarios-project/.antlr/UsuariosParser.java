@@ -1,4 +1,4 @@
-// Generated from Usuarios.g4 by ANTLR 4.13.2
+// Generated from c:/Users/jerea/Vale/51891/antlr-usuarios-project/Usuarios.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
 public class UsuariosParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.13.2", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -33,7 +33,7 @@ public class UsuariosParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, null, null, "'verdadero'", "'falso'", "'Usuario'", "'{'", "'}'", 
+			null, null, null, "'verdadero'", "'falso'", "'usuario'", "'{'", "'}'", 
 			"'.'", "';'", "'='", "','", "'\"'", "'!'", "'?'", "':'", "'''"
 		};
 	}

@@ -1,4 +1,4 @@
-// Generated from Usuarios.g4 by ANTLR 4.13.2
+// Generated from c:/Users/jerea/Vale/51891/antlr-usuarios-project/Usuarios.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
 public class UsuariosLexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.13.2", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -38,7 +38,7 @@ public class UsuariosLexer extends Lexer {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, null, null, "'verdadero'", "'falso'", "'Usuario'", "'{'", "'}'", 
+			null, null, null, "'verdadero'", "'falso'", "'usuario'", "'{'", "'}'", 
 			"'.'", "';'", "'='", "','", "'\"'", "'!'", "'?'", "':'", "'''"
 		};
 	}
@@ -149,7 +149,7 @@ public class UsuariosLexer extends Lexer {
 		"d\u0000\u0000-.\u0005e\u0000\u0000./\u0005r\u0000\u0000/0\u0005o\u0000"+
 		"\u00000\u0006\u0001\u0000\u0000\u000012\u0005f\u0000\u000023\u0005a\u0000"+
 		"\u000034\u0005l\u0000\u000045\u0005s\u0000\u000056\u0005o\u0000\u0000"+
-		"6\b\u0001\u0000\u0000\u000078\u0005U\u0000\u000089\u0005s\u0000\u0000"+
+		"6\b\u0001\u0000\u0000\u000078\u0005u\u0000\u000089\u0005s\u0000\u0000"+
 		"9:\u0005u\u0000\u0000:;\u0005a\u0000\u0000;<\u0005r\u0000\u0000<=\u0005"+
 		"i\u0000\u0000=>\u0005o\u0000\u0000>\n\u0001\u0000\u0000\u0000?@\u0005"+
 		"{\u0000\u0000@\f\u0001\u0000\u0000\u0000AB\u0005}\u0000\u0000B\u000e\u0001"+

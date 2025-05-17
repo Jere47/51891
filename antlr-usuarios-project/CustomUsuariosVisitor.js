@@ -1,35 +1,20 @@
 import UsuariosVisitor from "./generated/UsuariosVisitor.js";
 
 export class CustomUsuariosVisitor extends UsuariosVisitor {
-
-    constructor() {
-        super();
-        this.usuarios = []; // Lista para almacenar los usuarios procesados
-    }
-
     visitPrograma(ctx) {
-        // Visita todos los usuarios en el programa
-        ctx.usuario().forEach((usuarioCtx) => this.visit(usuarioCtx));
-        return this.usuarios;
+        return ctx.usuario().map(usuarioCtx => this.visit(usuarioCtx));
     }
 
     visitUsuario(ctx) {
-        const nombreUsuario = ctx.identificador().getText(); // Obtiene el identificador del usuario
-        const atributos = [];
-
-        // Procesa los atributos del usuario
-        ctx.atributo().forEach((atributoCtx) => {
-            atributos.push(this.visit(atributoCtx));
-        });
-
-        // Agrega el usuario a la lista
-        this.usuarios.push({ nombre: nombreUsuario, atributos });
+        const nombreUsuario = ctx.ID().getText();
+        const atributo = ctx.atributo().map(atributoCtx => this.visit(atributoCtx));
+        return { nombre: nombreUsuario, atributo };
     }
-
+   
     visitAtributo(ctx) {
-        const clave = ctx.identificador().getText(); // Extrae el identificador (clave) del atributo
-        const valor = this.visit(ctx.valor()); // Procesa el valor del atributo
-        return { clave, valor }; // Devuelve un objeto con clave y valor
+        const clave = ctx.ID().getText();
+        const valor = this.visit(ctx.valor());
+        return { clave, valor };
     }
 
     visitValor(ctx) {
@@ -43,20 +28,18 @@ export class CustomUsuariosVisitor extends UsuariosVisitor {
     }
 
     visitNumero(ctx) {
-        // Une todos los tokens DIGITO en un solo número y lo convierte a entero
-        const numeroTexto = ctx.DIGITO().map(digito => digito.getText()).join('');
-        return parseInt(numeroTexto, 10); // Convierte el texto a un número entero
+
+        return parseInt(ctx.NUMBER().getText(), 10);
     }
 
     visitCadena(ctx) {
-        // Elimina las comillas de la cadena
         return ctx.getText().slice(1, -1);
     }
 
     visitBooleano(ctx) {
-        if (ctx.VERDADERO()) {
+        if (ctx.TRUE()) {
             return true;
-        } else if (ctx.FALSO()) {
+        } else if (ctx.FALSE()) {
             return false;
         }
     }
